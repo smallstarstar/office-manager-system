@@ -1,0 +1,8 @@
+{
+    "menu":[
+        {
+            "routerName":"/home",
+            "path":"/home"
+        }
+    ]
+}
