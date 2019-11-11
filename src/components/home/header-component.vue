@@ -1,10 +1,17 @@
 <template>
   <div>
     <div class="navBar">
-      <span class="word">后台管理首页</span>
-      <!-- <span v-for="(item, index) in menuBar" :key="index">
-
-      </span> -->
+      <span class="word" @click="goBackHome()">后台管理首页</span>
+      <div class="naBarDate">
+        <span
+          v-for="(item, index) in menuBar"
+          :key="index"
+          class="navBarList"
+          @click="chooseItem(item)"
+        >
+          <router-link :to="item.path" :class="{'isColor':item.color}">{{item.routerName}}</router-link>
+        </span>
+      </div>
     </div>
     <div class="userInfo">
       <div class="img">{{userInfo.userName[0].toUpperCase()}}</div>
@@ -21,25 +28,39 @@
 import { Vue, Component } from "vue-property-decorator";
 import timeFormat from "@/utils/timeFormat";
 import { Getter } from "vuex-class";
-import textServices from '@/api/textServices';
+import textServices from "@/api/textServices";
 @Component({
   components: {}
 })
 export default class HeaderComponent extends Vue {
   private now: any = timeFormat.getCurrentTime();
   private interval: any;
+  private menuBar: any = [];
   @Getter("userInfo") userInfo!: any;
- async mounted() {
+  async mounted() {
     clearInterval(this.interval);
     this.interval = setInterval(() => {
       this.now = timeFormat.getCurrentTime();
     }, 1000);
-    const data = await textServices.text();
+    const data = await textServices.getMenu();
     console.log(data);
+    this.menuBar = data;
+    this.menuBar.forEach((element: any) => {
+      element.color = false;
+    });
   }
 
   destoryed() {
     clearInterval(this.interval);
+  }
+  goBackHome() {
+    this.$router.push({
+      path: "/home/content"
+    });
+    this.menuBar.forEach((element: any) => {
+      element.color = false;
+    });
+    this.$forceUpdate();
   }
   // 退出系统
   systemOut() {
@@ -68,21 +89,44 @@ export default class HeaderComponent extends Vue {
         });
       });
   }
+  chooseItem(e: any) {
+    this.menuBar.forEach((el: any) => {
+      el.color = false;
+    });
+    e.color = true;
+    this.$forceUpdate();
+  }
 }
 </script>
 
 <style lang='scss' scoped>
 .navBar {
   position: absolute;
-  width: 30%;
+  width: 60%;
   height: 60px;
-  border:1px solid red;
-  left:0;
+  left: 0;
+  top: -3px;
   .word {
     font-size: 20px;
     line-height: 60px;
-    padding-left:10px;
-   cursor: pointer;
+    padding-left: 10px;
+    cursor: pointer;
+  }
+  .naBarDate {
+    width: 90%;
+    height: 60px;
+    position: absolute;
+    top: 20px;
+    left: 24%;
+    .navBarList {
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
+  .isColor {
+    background-color: #f2784b;
+    color: #fff;
+    padding: 17px;
   }
 }
 .userInfo {
@@ -126,7 +170,7 @@ export default class HeaderComponent extends Vue {
     right: 10px;
     cursor: pointer;
     font-weight: 600;
-    color:#fff;
+    color: #fff;
   }
 }
 </style>

@@ -1,5 +1,5 @@
-const textUrl = {
-    textUrl: '/api/test'
+const routerForword = {
+   getMenu : '/api/v1/getMenu'
 }
 
-export default textUrl;
+export default routerForword;

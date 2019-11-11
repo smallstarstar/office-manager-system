@@ -5,8 +5,10 @@
         <HeaderComponent></HeaderComponent>
       </el-header>
       <el-container>
-        <el-aside width="201px"></el-aside>
-        <el-main>Main</el-main>
+        <!-- <el-aside width="201px"></el-aside> -->
+        <el-main>
+          <router-view />
+        </el-main>
       </el-container>
     </el-container>
   </div>

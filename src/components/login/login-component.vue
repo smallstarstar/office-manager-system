@@ -107,7 +107,7 @@ export default class LoginComponent extends Vue {
     const token: any = "123456";
     localStorage.setItem("token", JSON.stringify(token));
     this.$router.push({
-      path: "/home"
+      path: "/home/content"
     });
     this.$message({
       type:'success',

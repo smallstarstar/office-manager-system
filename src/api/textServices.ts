@@ -1,10 +1,10 @@
 import axios from 'axios';
-import textUrl from '@/url/text';
+import routerForword from '@/url/text';
 
 
 const textServices = {
-    text() {
-        const url = textUrl.textUrl;
+   getMenu () {
+        const url = routerForword.getMenu;
         return axios.get(url);
     }
 }

@@ -1,16 +1,22 @@
 # admin_shichaoxin
 
-## Project setup
+#### 简介
++ 用户登录
++ 用户注册
++ 路由控制
++ 员工打卡
++ 查看列表
+## 初始化
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 运行
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 编译
 ```
 npm run build
 ```
@@ -20,5 +26,3 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-const routes = [
+const routes: any = [
   {
     path: '/',
     name: 'login',
@@ -12,21 +12,38 @@ const routes = [
   {
     path: '/home',
     name: 'home',
-    component: () => import('@/components/home/home.vue')
+    component: () => import('@/components/home/home.vue'),
+    children: [
+      {
+        path: 'content',
+        name: 'content',
+        component: () => import('@/views/content.vue')
+      },
+      {
+        path: 'homecontent',
+        name: 'homecontent',
+        component: () => import('@/views/time-card/time-card.vue')
+      },
+      {
+        path: 'homelist',
+        name: 'list',
+        component: () => import('@/views/list-data/list-data.vue')
+      }
+    ]
   }
 ]
 
-const router = new VueRouter({
+const router: any = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
-})
+});
 
 /**
  * 添加路由守卫
  */
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to: any, from: any, next: any) => {
   const token = localStorage.getItem('token') ? true : false;
   if (to.path === '/') {
     next();

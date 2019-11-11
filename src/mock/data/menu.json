@@ -1,8 +1,19 @@
 {
     "menu":[
         {
-            "routerName":"/home",
-            "path":"/home"
+            "routerName":"首页",
+            "path":"/home/homecontent",
+            "index":1
+        },
+        {
+            "routerName":"列表",
+            "path":"/home/homelist",
+            "index":2
+        },
+        {
+            "routerName":"流程",
+            "path":"/home/content",
+            "index":3
         }
     ]
 }
