@@ -27,15 +27,22 @@ const routes: any = [
       {
         path: 'homelist',
         name: 'list',
-        component: () => import('@/views/list-data/list-data.vue')
+        component: () => import('@/views/list-data/list-data.vue'),
+        children:[
+          {
+            path:'userInfo',
+            name:'userInfo',
+            component: ()=> import('@/components/userInfoData/user-info.vue')
+          }
+        ]
       }
     ]
   }
 ]
 
 const router: any = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+  // mode: 'history',
+  // base: process.env.BASE_URL,
   routes
 });
 

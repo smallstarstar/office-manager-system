@@ -6,9 +6,11 @@
       </el-header>
       <el-container>
         <!-- <el-aside width="201px"></el-aside> -->
-        <el-main>
+        <div class="content">
+         <transition name="fade" mode="out-in">
           <router-view />
-        </el-main>
+         </transition>
+        </div>
       </el-container>
     </el-container>
   </div>
@@ -37,15 +39,8 @@ export default class Home extends Vue {
   background-color: #b3c0d1;
   color: #333;
 }
-
-.el-aside {
-  background-color: #d3dce6;
-  color: #333;
-}
-
-.el-main {
-  background-color: #e9eef3;
-  color: #333;
+.content {
+  width: 80%;
   height: 500px;
 }
 </style>

@@ -1,17 +1,21 @@
 <template>
-    <div>
-
-    </div>
+  <div>
+      <div class="side_menu">
+        
+      </div>
+  </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-    
-})
+import { Component, Vue, Prop } from "vue-property-decorator";
+@Component({components:{}})
+export default class SideMenu extends Vue {
+  @Prop({default:[]})
+  listDataMenu: any;
+}
 </script>
 
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 
 </style>

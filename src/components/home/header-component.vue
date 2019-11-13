@@ -43,7 +43,6 @@ export default class HeaderComponent extends Vue {
       this.now = timeFormat.getCurrentTime();
     }, 1000);
     const data = await textServices.getMenu();
-    console.log(data);
     this.menuBar = data;
     this.menuBar.forEach((element: any) => {
       element.color = false;

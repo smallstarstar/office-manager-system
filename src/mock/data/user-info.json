@@ -1,0 +1,52 @@
+{
+    "userInfo": [{
+            "userName": "xiaoming",
+            "password": "3434435",
+            "address": "合肥",
+            "phone":"123456",
+            "email": "123@qq.com",
+            "role": "普通员工"
+        },
+        {
+            "userName": "xiaogang",
+            "password": "56566",
+            "phone":"123456",
+            "address": "合肥",
+            "email": "123@qq.com",
+            "role": "普通员工"
+        },
+        {
+            "userName": "xiaohong",
+            "password": "12455463456",
+            "phone":"123456",
+            "address": "合肥",
+            "email": "123@qq.com",
+            "role": "普通员工"
+        },
+        {
+            "userName": "xiaozhang",
+            "phone":"123456",
+            "password": "123456",
+            "address": "合肥",
+            "email": "123@qq.com",
+            "role": "普通员工"
+        },
+        {
+            "userName": "xiaoli",
+            "password": "123456",
+            "phone":"123456",
+            "address": "合肥",
+            "email": "123@qq.com",
+            "role": "普通员工"
+        },
+        {
+            "userName": "xiaozhao",
+            "phone":"123456",
+            "password": "123456",
+            "address": "合肥",
+            "email": "123@qq.com",
+            "role": "普通员工"
+        }
+
+    ]
+}
