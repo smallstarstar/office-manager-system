@@ -1,7 +1,7 @@
 <template>
   <div>
-    <el-table :data="userInfoData" style="width: 100%">
-      <el-table-column label="姓名" width="180">
+     <el-table :data="userInfoData" style="width: 100%" v-loading="loading">
+      <el-table-column label="姓名" width="120">
         <template slot-scope="scope">
           <span style="margin-left: 10px">{{ scope.row.userName }}</span>
         </template>
@@ -11,12 +11,12 @@
           <span style="margin-left: 10px">{{ scope.row.password }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="手机" width="180">
+      <el-table-column label="手机" width="150">
         <template slot-scope="scope">
           <span style="margin-left: 10px">{{ scope.row.phone }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="邮箱" width="180">
+      <el-table-column label="邮箱" width="140">
         <template slot-scope="scope">
           <span style="margin-left: 10px">{{ scope.row.email }}</span>
         </template>
@@ -37,7 +37,7 @@
           <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
         </template>
       </el-table-column>
-    </el-table>
+    </el-table> 
   </div>
 </template>
 
@@ -47,8 +47,14 @@ import textServices from "@/api/textServices";
 @Component({ components: {} })
 export default class UserInfoDate extends Vue {
   private userInfoData: any = [];
+  private loading: any = true; 
   async created() {
     this.userInfoData = await textServices.getUserInfo();
+    if(this.userInfoData.length !== 0) {
+      this.loading = false;
+    } else {
+      this.loading = true;
+    }
   }
 }
 </script>

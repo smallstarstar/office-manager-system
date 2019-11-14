@@ -25,14 +25,29 @@ const routes: any = [
         component: () => import('@/views/time-card/time-card.vue')
       },
       {
+        path: 'disposal',
+        name: 'disposal',
+        component: ()=> import('@/views/disposal/disposal.vue')
+      },
+      {
         path: 'homelist',
         name: 'list',
         component: () => import('@/views/list-data/list-data.vue'),
         children:[
+          // 路由重定向
+          {
+            path:'',
+            redirect: 'userInfo'
+          },
           {
             path:'userInfo',
             name:'userInfo',
             component: ()=> import('@/components/userInfoData/user-info.vue')
+          },
+          {
+            path:'shopInfo',
+            name:'shopInfo',
+            component: ()=> import('@/components/shopInfoData/shop-info-data.vue')
           }
         ]
       }

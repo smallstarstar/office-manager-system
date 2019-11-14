@@ -7,9 +7,9 @@
       <el-container>
         <!-- <el-aside width="201px"></el-aside> -->
         <div class="content">
-         <transition name="fade" mode="out-in">
-          <router-view />
-         </transition>
+          <transition name="el-fade-in-linear">
+            <router-view></router-view>
+          </transition>
         </div>
       </el-container>
     </el-container>
@@ -26,9 +26,9 @@ import { Action } from "vuex-class";
   }
 })
 export default class Home extends Vue {
-  @Action('setUserInfo') setUserInfo!: any;
+  @Action("setUserInfo") setUserInfo!: any;
   created() {
-    const userInfo: any = localStorage.getItem('userInfo');
+    const userInfo: any = localStorage.getItem("userInfo");
     this.setUserInfo(JSON.parse(userInfo));
   }
 }

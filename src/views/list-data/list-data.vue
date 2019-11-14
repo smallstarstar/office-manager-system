@@ -1,14 +1,10 @@
 <template>
   <div>
-    <div class="list">
-      <div class="menulist">
-        <SideMenu :listDataMenu="listDataMenu" />
-      </div>
-      <div>
-        <transition name="fade" mode="out-in">
-          <router-view />
-        </transition>
-      </div>
+    <SideMenu :listDataMenu="listDataMenu" />
+    <div class="container">
+      <transition name="el-fade-in-linear">
+        <router-view></router-view>
+      </transition>
     </div>
   </div>
 </template>
@@ -24,16 +20,31 @@ import SideMenu from "@/components/home/sideMenu.vue";
 })
 export default class ListData extends Vue {
   private listDataMenu: any = [];
+  created() {
+    this.listDataMenu = [
+      {
+        routerName: "用户信息",
+        path: "/home/homelist/userInfo",
+        icon: "el-icon-user-solid",
+
+      },
+       {
+        routerName: "待审列表",
+        path: "/home/homelist/shopInfo",
+        icon: "el-icon-s-check",
+        
+      }
+    ];
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-.list {
-  .menulist {
-    width: 200px;
-    height: 500px;
-    box-shadow: 1px 0px 0px #ddd;
-    background-color: #ddd;
-  }
+.container {
+  width: 112%;
+  height: 500px;
+  margin-left:120px;
+  padding: 10px;
+  background: #e2e2e2;
 }
 </style>

@@ -29,6 +29,8 @@ import { Vue, Component } from "vue-property-decorator";
 import timeFormat from "@/utils/timeFormat";
 import { Getter } from "vuex-class";
 import textServices from "@/api/textServices";
+import EventKeys from '@/common/event-keys/eventKeys';
+import rxEvent from 'pubsub-js';
 @Component({
   components: {}
 })
@@ -47,6 +49,11 @@ export default class HeaderComponent extends Vue {
     this.menuBar.forEach((element: any) => {
       element.color = false;
     });
+
+    // 400
+    rxEvent.subscribe(EventKeys.PARMAS_ERROR_MESSAGE, ({val,data}: any)=>{
+      this.$message.error('参数错误');
+    })
   }
 
   destoryed() {
