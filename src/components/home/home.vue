@@ -12,6 +12,9 @@
           </transition>
         </div>
       </el-container>
+      <el-footer class="footer"> 
+        <FooterComponent />
+      </el-footer>
     </el-container>
   </div>
 </template>
@@ -20,9 +23,11 @@
 import { Vue, Component } from "vue-property-decorator";
 import HeaderComponent from "./header-component.vue";
 import { Action } from "vuex-class";
+import FooterComponent from './footer-component.vue';
 @Component({
   components: {
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   }
 })
 export default class Home extends Vue {
@@ -34,10 +39,16 @@ export default class Home extends Vue {
 }
 </script>
 <style>
-.el-header,
-.el-footer {
+.el-header {
   background-color: #b3c0d1;
   color: #333;
+}
+.el-footer {
+  position: absolute;
+  bottom: 0;
+  background-color: #b3c0d1;
+  width: 100%;
+  height: 10px;
 }
 .content {
   width: 80%;

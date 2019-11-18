@@ -36,23 +36,23 @@ export default class Disposal extends Vue {
   created() {
     this.listDataMenu = [
       {
-        routerName: "审核信息",
-        path: "/home/homelist/userInfo",
+        routerName: "信息审核",
+        path: "/home/disposal/reviewInfo",
         icon: "el-icon-document-remove"
       },
       {
-        routerName: "审核查看",
-        path: "/home/homelist/shopInfo",
+        routerName: "查看资源",
+        path: "/home/disposal/resourceView",
         icon: "el-icon-document-copy"
       },
         {
-        routerName: "审核通知",
-        path: "/home/homelist/userInfo",
+        routerName: "物资跟踪",
+        path: "/home/disposal/resourceTrack",
         icon: "el-icon-reading"
       },
       {
         routerName: "查看报告",
-        path: "/home/homelist/shopInfo",
+        path: "/home/disposal/resourceLook",
         icon: "el-icon-film"
       }
     ];

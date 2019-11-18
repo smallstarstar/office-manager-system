@@ -27,27 +27,54 @@ const routes: any = [
       {
         path: 'disposal',
         name: 'disposal',
-        component: ()=> import('@/views/disposal/disposal.vue')
+        component: () => import('@/views/disposal/disposal.vue'),
+        children: [
+          // 路由重定向
+          {
+            path: '',
+            redirect: 'reviewInfo'
+          },
+          {
+            path: 'reviewInfo',
+            name: 'reviewInfo',
+            component: () => import('@/components/reviewInfo/review-info.vue')
+          },
+          {
+            path: 'resourceLook',
+            name: 'resourceLook',
+            component: () => import('@/components/resourceLook/resource-look.vue')
+          },
+          {
+            path: 'resourceTrack',
+            name: 'resourceTrack',
+            component: () => import('@/components/resourceTrack/resource-track.vue')
+          },
+          {
+            path: 'resourceView',
+            name: 'resourceView',
+            component: () => import('@/components/resourceView/resource-view.vue')
+          }
+        ]
       },
       {
         path: 'homelist',
         name: 'list',
         component: () => import('@/views/list-data/list-data.vue'),
-        children:[
+        children: [
           // 路由重定向
           {
-            path:'',
+            path: '',
             redirect: 'userInfo'
           },
           {
-            path:'userInfo',
-            name:'userInfo',
-            component: ()=> import('@/components/userInfoData/user-info.vue')
+            path: 'userInfo',
+            name: 'userInfo',
+            component: () => import('@/components/userInfoData/user-info.vue')
           },
           {
-            path:'shopInfo',
-            name:'shopInfo',
-            component: ()=> import('@/components/shopInfoData/shop-info-data.vue')
+            path: 'shopInfo',
+            name: 'shopInfo',
+            component: () => import('@/components/shopInfoData/shop-info-data.vue')
           }
         ]
       }

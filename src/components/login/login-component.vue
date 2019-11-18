@@ -10,10 +10,12 @@
           :hide-required-asterisk="true"
         >
           <el-form-item class="userName" label="用户名" :prop="validatorName.userName">
+            <el-input style="position:fixed;bottom:-9999px"></el-input>
             <el-input v-model="userInfo.userName"></el-input>
           </el-form-item>
           <el-form-item class="password" label="密码" :prop="validatorName.password">
-            <el-input v-model="userInfo.password" type="password"></el-input>
+            <el-input type="text" style="display:none"></el-input>
+            <el-input v-model="userInfo.password"></el-input>
           </el-form-item>
           <el-form-item>
             <el-checkbox v-model="remember">记住我</el-checkbox>
@@ -24,10 +26,14 @@
               type="primary"
               :loading="loading"
               @click="login('userInfo')"
-            >登录</el-button>
+            >登 录</el-button>
           </el-form-item>
         </el-form>
       </div>
+        <el-button v-if="showClient"
+              class="buttonSub"
+              type="success"
+            >注 册</el-button>
       <div class="borderClient" v-if="!showClient">
         <div class="wordName">点击头像登录</div>
         <div class="img" @click="subLogin()">
@@ -48,6 +54,10 @@ import { Vue, Component } from "vue-property-decorator";
 import { ValidatorName } from "@/common/enums/validator-name";
 import ValidatorRules from "@/utils/validator-rules";
 import { Action } from "vuex-class";
+import userLoginServices from "@/api/userLoginServices";
+import { LoginCode } from "@/common/enums/login-code";
+import configBase from '../../../public/config';
+
 @Component({
   components: {}
 })
@@ -78,13 +88,6 @@ export default class LoginComponent extends Vue {
       if (!valid) {
         return;
       } else {
-        if (this.remember) {
-          // 将信息存入localStorage
-          const remember: any = {};
-          remember.remembered = true;
-          const object = { ...this.userInfo, ...remember };
-          localStorage.setItem("userInfoRember", JSON.stringify(object));
-        }
         this.loginForm();
       }
     });
@@ -100,19 +103,37 @@ export default class LoginComponent extends Vue {
     this.userInfo = {};
   }
   //
-  loginForm() {
+  async loginForm() {
     // 将数据存入store中
-    this.setUserInfo(this.userInfo);
-    localStorage.setItem("userInfo", JSON.stringify(this.userInfo));
-    const token: any = "123456";
-    localStorage.setItem("token", JSON.stringify(token));
-    this.$router.push({
-      path: "/home/content"
-    });
-    this.$message({
-      type:'success',
-      message:'欢迎' + this.userInfo.userName + '登录'
-    })
+    const data: any = await userLoginServices.userLoginSystem(
+      this.userInfo.userName,
+      this.userInfo.password
+    );
+    console.log(data);
+    // 登录成功
+    if (data.code === LoginCode.LOGINSUCCESSCODE) {
+      if (this.remember) {
+        // 将信息存入localStorage
+        const remember: any = {};
+        remember.remembered = true;
+        const object = { ...this.userInfo, ...remember };
+        localStorage.setItem("userInfoRember", JSON.stringify(object));
+      }
+      this.setUserInfo(data.userEntity);
+      localStorage.setItem("userInfo", JSON.stringify(data.userEntity));
+      const token: any = configBase.mockToken;
+      localStorage.setItem("token", JSON.stringify(token));
+      this.$router.push({
+        path: "/home/content"
+      });
+      this.$message.success("欢迎" + this.userInfo.userName + "登录");
+    }
+    if (data.code === LoginCode.LOGINFAILCODE) {
+      this.$message.error(data.message);
+      // 清空输入框
+      this.userInfo = {};
+      this.remember = false;
+    }
   }
 }
 </script>
