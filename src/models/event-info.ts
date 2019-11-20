@@ -1,16 +1,16 @@
 
 export class EventInfo {
 
-    typeName?:string;
+    typeName?: string;
 
-    type?:string;
-    
-    level?:string;
+    type?: string;
 
-    address?:string;
+    level?: string;
 
-    time?:string;
+    address?: string;
 
-    desc?:string;
+    time?: Date;
+
+    desc?: string;
 
 }

@@ -5,6 +5,8 @@ import getters from '@/store/getters';
 import userInfoStore from '@/store/modules/user-info-store';
 import playTimeStore from '@/store/modules/play-time-store';
 import menuInfoStore from '@/store/modules/menu-info-store';
+import eventInfoStore from '@/store/modules/event-info-store';
+
 
 
 Vue.use(Vuex)
@@ -14,7 +16,8 @@ export default new Vuex.Store({
   modules: {
     userInfoStore, 
     playTimeStore,
-    menuInfoStore
+    menuInfoStore,
+    eventInfoStore
   },
   getters,
   plugins: debug ? [createLogger()] : []

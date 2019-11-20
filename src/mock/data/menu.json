@@ -9,11 +9,6 @@
             "routerName":"列表",
             "path":"/home/homelist",
             "index":2
-        },
-        {
-            "routerName":"流程",
-            "path":"/home/disposal",
-            "index":3
         }
     ]
 }

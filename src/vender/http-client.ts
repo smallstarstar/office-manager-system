@@ -28,7 +28,9 @@ axios.interceptors.response.use((res: any) => {
 axios.interceptors.request.use((config: any) => {
     const { data, method } = config;
     if (method.toLowerCase() === 'post' && typeof data === 'object') {
-        config.data = qs.stringify(data);
+        //  在 node.js的服务中是使用的/在java的服务中不需要，此项目本人启用的是spring boot;
+        // config.data = qs.stringify(data);
+        // console.log(config.data, '========================');
     }
     return config;
 })

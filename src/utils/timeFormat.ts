@@ -18,6 +18,12 @@ const timeFormat = {
         const yearTime = yy + '-' + mm + '-' + dd;
         const dayTime = HH + ':' + MM + ':' + SS;
         return yearTime + ' ' + dayTime;
+    },
+
+    changeStateTime(time: any) {
+        const d = new Date(time);
+        var times = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+        return times;
     }
 }
 

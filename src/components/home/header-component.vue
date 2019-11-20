@@ -29,8 +29,8 @@ import { Vue, Component } from "vue-property-decorator";
 import timeFormat from "@/utils/timeFormat";
 import { Getter } from "vuex-class";
 import textServices from "@/api/textServices";
-import EventKeys from '@/common/event-keys/eventKeys';
-import rxEvent from 'pubsub-js';
+import EventKeys from "@/common/event-keys/eventKeys";
+import rxEvent from "pubsub-js";
 @Component({
   components: {}
 })
@@ -51,9 +51,16 @@ export default class HeaderComponent extends Vue {
     });
 
     // 400
-    rxEvent.subscribe(EventKeys.PARMAS_ERROR_MESSAGE, ({val,data}: any)=>{
-      this.$message.error('参数错误');
-    })
+    rxEvent.subscribe(EventKeys.PARMAS_ERROR_MESSAGE,  (name: any, val: any) => {
+      this.$message.error("参数错误");
+    });
+    rxEvent.subscribe(EventKeys.DISABLE_MENU_COLOR, (name: any, val: any) => {
+      if (val) {
+        this.menuBar.forEach((element: any) => {
+          element.color = false;
+        });
+      }
+    });
   }
 
   destoryed() {

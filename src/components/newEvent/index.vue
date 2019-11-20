@@ -42,7 +42,7 @@
           </el-col>
           <el-col :span="8">
             <el-form-item label="时间" :prop="validatorName.time">
-              <el-date-picker v-model="eventInfo.time" type="date" placeholder="选择日期"></el-date-picker>
+              <el-date-picker v-model="eventInfo.time" type="datetime" placeholder="选择日期"></el-date-picker>
             </el-form-item>
           </el-col>
         </el-row>
@@ -69,6 +69,8 @@ import { Component, Vue } from "vue-property-decorator";
 import { EventInfo } from "@/models/event-info";
 import { ValidatorName } from "@/common/enums/validator-name";
 import ValidatorRules from "@/utils/validator-rules";
+import eventInfoServices from '@/api/eventInfoServices';
+
 @Component({
   components: {}
 })
@@ -89,12 +91,16 @@ export default class NewEvent extends Vue {
     (this.$refs[eventInfo] as any).resetFields();
   }
   submit(eventInfo: any) {
-    (this.$refs[eventInfo] as any).validate((valid: any) => {
+    (this.$refs[eventInfo] as any).validate( async (valid: any) => {
       if (!valid) {
         return;
       } else {
-        this.dialogVisible = false;
-        this.showLight = false;
+        console.log(this.eventInfo);
+        const result = await eventInfoServices.saveEventInfo(this.eventInfo);
+        if(result) {
+        // this.dialogVisible = false;
+        // this.showLight = false;
+        }
       }
     });
   }

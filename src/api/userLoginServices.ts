@@ -1,6 +1,6 @@
 import axios from 'axios';
 import loginUrl from '@/url/login-url';
-import configBase from '../../public/config'
+import configBase from '../../public/config';
 
 
 const BaseUrl = configBase.baseUrl;
