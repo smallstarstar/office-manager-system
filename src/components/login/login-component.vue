@@ -24,7 +24,7 @@
             <el-button
               class="buttonSub"
               type="primary"
-              :loading="loading"
+              v-loading="loading"
               @click="login('userInfo')"
             >登 录</el-button>
           </el-form-item>

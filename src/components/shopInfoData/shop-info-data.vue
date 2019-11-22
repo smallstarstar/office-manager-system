@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 待审的商品列表 -->
-    <el-table :data="tableData" style="width: 100%" class="table">
+    <el-table :data="tableData" style="width: 100%" class="table" v-loading="loading">
       <el-table-column label="名称" width="120">
         <template slot-scope="scope">
           <span style="margin-left: 10px">{{ scope.row.name }}</span>
@@ -79,11 +79,16 @@ export default class ShopInfoData extends Vue {
   private current: number = 7;
   private total: number = 0;
   private timeChange: any = timeFormat;
+  private loading: boolean = true;
 
  async created() {
+   this.loading = true;
    const result: any = await eventInfoServices.getEventInfoByPage(this.page,this.current);
-   this.tableData = result.content;
-   this.total = result.totalElements;
+   if(result) {
+     this.loading = false;
+     this.tableData = result.content;
+     this.total = result.totalElements;
+   }
   }
 
   handleEdit() {}
@@ -91,6 +96,7 @@ export default class ShopInfoData extends Vue {
   handleSizeChange() {}
   handleCurrentChange() {}
   getInfoDisposal(e: any) {
+    e.router = '/home/homelist/shopInfo';
     this.saveEventInfo(e);
     // 进入主流程
     this.$router.push('/home/disposal/reviewInfo');

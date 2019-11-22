@@ -1,3 +1,6 @@
+@import './helpers/mixin.scss';
+
+
 * {
     margin: 0;
     padding: 0;
@@ -15,4 +18,60 @@ a {
     font-size: 20px;
     text-decoration: none;
     padding: 17px;
+}
+
+.test {
+
+    width: 50px;
+
+    height: 200px;
+
+    overflow: auto;
+
+    float: left;
+
+    margin: 5px;
+
+    border: none;
+
+}
+
+.scrollbar {
+
+    width: 30px;
+
+    height: 300px;
+
+    margin: 0 auto;
+
+
+
+}
+
+.test-1::-webkit-scrollbar {
+    /*滚动条整体样式*/
+
+    width: 10px;
+    /*高宽分别对应横竖滚动条的尺寸*/
+
+    height: 1px;
+
+}
+
+.test-1::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+
+    border-radius: 10px;
+
+    background: #535353;
+
+}
+
+.test-1::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+
+    border-radius: 10px;
+
+    background: #EDEDED;
+
 }

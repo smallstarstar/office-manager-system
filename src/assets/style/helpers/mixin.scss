@@ -1,0 +1,15 @@
+// 封装样式
+
+@mixin scrollBar {
+    &::-webkit-scrollbar-track-piece{
+        background:transparent;
+    }
+    &::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+    }
+    &::-webkit-scrollbar-thunb {
+        background-color:#d5d6de;
+        border-radius: 20%;
+    }
+}

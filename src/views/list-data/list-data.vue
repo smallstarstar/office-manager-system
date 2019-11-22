@@ -1,10 +1,14 @@
 <template>
   <div>
-    <SideMenu :listDataMenu="listDataMenu" />
-    <div class="container">
-      <transition name="el-fade-in-linear">
-        <router-view></router-view>
-      </transition>
+    <div class="list-data">
+      <div class="left">
+        <SideMenu :listDataMenu="listDataMenu" />
+      </div>
+      <div class="container">
+        <transition name="el-fade-in-linear">
+          <router-view></router-view>
+        </transition>
+      </div>
     </div>
   </div>
 </template>
@@ -25,14 +29,12 @@ export default class ListData extends Vue {
       {
         routerName: "用户信息",
         path: "/home/homelist/userInfo",
-        icon: "el-icon-user-solid",
-
+        icon: "el-icon-user-solid"
       },
-       {
+      {
         routerName: "待审列表",
         path: "/home/homelist/shopInfo",
-        icon: "el-icon-s-check",
-        
+        icon: "el-icon-s-check"
       }
     ];
   }
@@ -40,11 +42,13 @@ export default class ListData extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  width: 112%;
-  height: 500px;
-  margin-left:120px;
-  padding: 10px;
-  background: #e2e2e2;
+.list-data {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  .container {
+    width: 100%;
+  }
 }
 </style>

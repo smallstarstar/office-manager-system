@@ -25,7 +25,7 @@ export default class SideMenu extends Vue {
 
 <style lang="scss" scoped>
 .side_menu {
-  position: absolute;
+  position: relative;
   width: 120px;
   height: 500px;
   background-color: #ddd;

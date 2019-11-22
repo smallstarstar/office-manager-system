@@ -14,7 +14,7 @@
       :visible.sync="dialogVisible"
       width="60%"
       :show-close="false"
-      :before-close="handleClose"
+      :before-close="handleClose" 
     >
       <el-form :model="eventInfo" ref="eventInfo" :rules="validatorRules">
         <el-row :gutter="24">

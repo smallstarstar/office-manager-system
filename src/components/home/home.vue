@@ -51,7 +51,7 @@ export default class Home extends Vue {
   height: 10px;
 }
 .content {
-  width: 80%;
+  width: 100%;
   height: 500px;
 }
 </style>

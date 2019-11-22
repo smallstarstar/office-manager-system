@@ -1,18 +1,19 @@
 <template>
   <div>
-    <div class="sideMenu">
+    <div class="event-sop">
       <SideMenu :listDataMenu="listDataMenu" />
-    </div>
-    <div class="container">
-      <transition name="el-fade-in-linear">
-        <router-view></router-view>
-      </transition>
-    </div>
-    <div class="rightSide">
-      <div class="top">
-        <EventCard />
+      <div class="container-view">
+        <div class="container">
+          <transition name="el-fade-in-linear">
+            <router-view></router-view>
+          </transition>
+        </div>
+        <div class="footer_button">
+          <AddRecord />
+        </div>
       </div>
-      <div class="bottom">
+      <div>
+        <EventCard />
         <TimeSheet />
       </div>
     </div>
@@ -24,11 +25,14 @@ import { Component, Vue } from "vue-property-decorator";
 import SideMenu from "@/components/home/sideMenu.vue";
 import TimeSheet from "@/components/timeSheet/time-sheet.vue";
 import EventCard from "@/components/eventCard/event-card.vue";
+import AddRecord from "@/components/disposal-footer-button/add-record/index.vue";
+
 @Component({
   components: {
     SideMenu,
     TimeSheet,
-    EventCard
+    EventCard,
+    AddRecord
   }
 })
 export default class Disposal extends Vue {
@@ -45,7 +49,7 @@ export default class Disposal extends Vue {
         path: "/home/disposal/resourceView",
         icon: "el-icon-document-copy"
       },
-        {
+      {
         routerName: "物资跟踪",
         path: "/home/disposal/resourceTrack",
         icon: "el-icon-reading"
@@ -61,25 +65,23 @@ export default class Disposal extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  position: absolute;
-  width: 67%;
-  height: 500px;
-  margin-left: 120px;
-  padding: 10px;
-  background: #e2e2e2;
+.event-sop {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  width: 100%;
 }
-.rightSide {
-  position: absolute;
-  width: 300px;
-  overflow: hidden;
-  height: 500px;
-  border: 1px solid #f2784b;
-  right: 1px;
-  .top {
+.container-view {
+  width: 70%;
+  .container {
+    padding: 10px;
+    width: 97%;
+    height: 430px;
+  }
+  .footer_button {
     width: 100%;
-    height: 100px;
-    border: 1px solid red;
+    margin-top: 10px;
+    margin-left:10px;
   }
 }
 </style>
