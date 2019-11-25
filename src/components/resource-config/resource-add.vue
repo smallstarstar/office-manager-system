@@ -66,7 +66,6 @@ export default class ResourceAdd extends Vue {
     (this.$refs[resourceInfo] as any).resetFields();
   }
   submit(resourceInfo: any) {
-    // this.dialogVisible = false;
     (this.$refs[resourceInfo] as any).validate((valid: any) => {
       if (!valid) {
         return;
