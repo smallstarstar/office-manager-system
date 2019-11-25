@@ -7,5 +7,8 @@ export enum ValidatorName {
     address = 'address',
     time = 'time',
     desc = 'desc',
+    resourceName = 'resourceName',
+    resourceSubName = 'resourceSubName',
+    resourceTag = 'resourceTag'
 
 }

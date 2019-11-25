@@ -17,7 +17,7 @@
           class="button"
           @click="submit()"
           :disabled="disabled"
-          v-loading="loading"
+          :loading="loading"
         >提 交</el-button>
       </div>
     </div>

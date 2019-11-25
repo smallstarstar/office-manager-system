@@ -77,6 +77,27 @@ const routes: any = [
             component: () => import('@/components/shopInfoData/shop-info-data.vue')
           }
         ]
+      },
+      {
+        path: 'systemConfig',
+        name: 'systemConfig',
+        component: ()=> import ('@/views/system-config/system-config.vue'),
+        children:[
+          {
+            path: '',
+            redirect: 'resourceConfig'
+          },
+          {
+            path: 'resourceConfig',
+            name: 'resourceConfig',
+            component: ()=> import ('@/components/resource-config/resource-config.vue'),
+          },
+          {
+            path: 'routerConfig',
+            name: 'routerConfig',
+            component: () => import ('@/components/router-config/index.vue')
+          }
+        ]
       }
     ]
   }

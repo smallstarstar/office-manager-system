@@ -48,6 +48,7 @@ export default class TimeSheet extends Vue {
     // 刷新时间轴
     rxevent.subscribe(EventKeys.REFRESHTIMESHEET, async (name: any, val: any) =>{
       await this.getInitData(this.eventInfo.id);
+      this.scroller();
     });
   }
   scroller() {

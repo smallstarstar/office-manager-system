@@ -9,6 +9,11 @@
             "routerName":"列表",
             "path":"/home/homelist",
             "index":2
+        },
+        {
+            "routerName":"配置",
+            "path":"/home/systemConfig",
+            "index":3  
         }
     ]
 }

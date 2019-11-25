@@ -23,6 +23,15 @@ const ValidatorRules = {
     desc: [
         { required: true, message: '描述不能为空', trigger: 'blur' }
     ],
+    resourceName: [
+        { required: true, message: '类型不能为空', trigger: 'blur' }
+    ],
+    resourceSubName: [
+        { required: true, message: '子类型不能为空', trigger: 'blur' }
+    ],
+    resourceTag: [
+        { required: true, message: '型号不能为空', trigger: 'blur' }
+    ],
 }
 
 export default ValidatorRules;

@@ -6,6 +6,9 @@ export enum RoleCode {
     ROLE_CUSTOMER = 1,
 
     // 待审员工
-    ROLE_REVIEW = 2
+    ROLE_REVIEW = 2,
+
+    // 超级管理员
+    SUPER_MANAGER = 3,
 }
 
