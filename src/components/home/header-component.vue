@@ -50,10 +50,19 @@ export default class HeaderComponent extends Vue {
       element.color = false;
     });
 
-    // 400
-    rxEvent.subscribe(EventKeys.PARMAS_ERROR_MESSAGE,  (name: any, val: any) => {
+    // 参数请求错误400
+    rxEvent.subscribe(EventKeys.PARMAS_ERROR_MESSAGE, (name: any, val: any) => {
       this.$message.error("参数错误");
     });
+    // 内部服务器错误
+    rxEvent.subscribe(EventKeys.SERVICES_ERROR_MESSAGE, (name: any, val: any) => {
+        this.$message.error('服务错误');
+      }
+    );
+    // 请求路径错误
+    rxEvent.subscribe(EventKeys.REQUEST_ERROR_WAY, (name: any, val: any) => {
+      this.$message.error('请求路径错误');
+    })
     rxEvent.subscribe(EventKeys.DISABLE_MENU_COLOR, (name: any, val: any) => {
       if (val) {
         this.menuBar.forEach((element: any) => {

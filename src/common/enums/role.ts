@@ -1,4 +1,4 @@
-export enum Role {
+export enum RoleCode {
     // 管理员
     ROLE_MANAGER = 0,
     

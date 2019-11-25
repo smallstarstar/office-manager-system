@@ -5,10 +5,10 @@ const ValidatorRules = {
     password: [
         { required: true, message: '密码不能为空', trigger: 'blur' }
     ],
-    typeName: [
+    subName: [
         { required: true, message: '名称不能为空', trigger: 'blur' }
     ],
-    type: [
+    name: [
         { required: true, message: '类型不能为空', trigger: 'blur' }
     ],
     level: [

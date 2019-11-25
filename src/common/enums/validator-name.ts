@@ -1,8 +1,8 @@
 export enum ValidatorName {
     userName = 'userName',
     password = 'password',
-    typeName = 'typeName',
-    type = 'type',
+    subName = 'subName',
+    name = 'name',
     level = 'level',
     address = 'address',
     time = 'time',

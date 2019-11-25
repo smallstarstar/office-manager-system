@@ -19,13 +19,13 @@
       <el-form :model="eventInfo" ref="eventInfo" :rules="validatorRules">
         <el-row :gutter="24">
           <el-col :span="8">
-            <el-form-item label="名称" :prop="validatorName.typeName">
-              <el-input placeholder="请输入..." v-model="eventInfo.typeName"></el-input>
+            <el-form-item label="名称" :prop="validatorName.name">
+              <el-input placeholder="请输入..." v-model="eventInfo.name"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
-            <el-form-item label="类型" :prop="validatorName.type">
-              <el-input placeholder="请输入..." v-model="eventInfo.type"></el-input>
+            <el-form-item label="类型" :prop="validatorName.subName">
+              <el-input placeholder="请输入..." v-model="eventInfo.subName"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
@@ -70,11 +70,17 @@ import { EventInfo } from "@/models/event-info";
 import { ValidatorName } from "@/common/enums/validator-name";
 import ValidatorRules from "@/utils/validator-rules";
 import eventInfoServices from '@/api/eventInfoServices';
+import rxevent from 'pubsub-js';
+import EventKeys from '@/common/event-keys/eventKeys';
+import { Getter } from 'vuex-class';
+
 
 @Component({
   components: {}
 })
 export default class NewEvent extends Vue {
+  @Getter('userInfo')
+  userInfo!: any;
   private showLight: boolean = false;
   private dialogVisible: boolean = false;
   private eventInfo: EventInfo = new EventInfo();
@@ -95,11 +101,20 @@ export default class NewEvent extends Vue {
       if (!valid) {
         return;
       } else {
-        console.log(this.eventInfo);
+        this.eventInfo.disposalStatus = 0;
+        this.eventInfo.personal = this.userInfo.userName;
+        this.eventInfo.role = this.userInfo.role;
         const result = await eventInfoServices.saveEventInfo(this.eventInfo);
         if(result) {
-        // this.dialogVisible = false;
-        // this.showLight = false;
+        this.dialogVisible = false;
+        this.showLight = false;
+        rxevent.publish(EventKeys.REFRESH_GETDATE, true);
+        const messageInfo: any = {
+          type: 'success',
+          position: 'bottpm-right',
+          message: '添加事件成功'
+        }
+        this.$notify(messageInfo);
         }
       }
     });

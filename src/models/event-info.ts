@@ -1,7 +1,9 @@
 
 export class EventInfo {
 
-    typeName?: string;
+    name?: string;
+
+    subName?: string;
 
     type?: string;
 
@@ -12,5 +14,11 @@ export class EventInfo {
     time?: Date;
 
     desc?: string;
+
+    disposalStatus?: number;
+
+    personal?: string;
+    
+    role?: number;
 
 }

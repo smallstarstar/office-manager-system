@@ -9,7 +9,6 @@ const userLoginServices = {
     // 用户登录
     async userLoginSystem(userName: any, password: any) {
         const url = BaseUrl + loginUrl.userlogin + '?userName=' + `${userName}` + '&password=' + `${password}`;
-        console.log(url);
         return await axios.get(url);
     }
 }

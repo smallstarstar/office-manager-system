@@ -70,6 +70,8 @@ export default class LoginComponent extends Vue {
   private showClient: any = false;
   @Action("setUserInfo") setUserInfo!: any;
   created() {
+    // 清除token
+    localStorage.removeItem('token');
     // 读取localStorage的信息存在则另外一种方式登录--微信的登录方式
     const user: any = localStorage.getItem("userInfoRember") ? true : false;
     const userInfo: any = localStorage.getItem("userInfoRember");
@@ -109,7 +111,6 @@ export default class LoginComponent extends Vue {
       this.userInfo.userName,
       this.userInfo.password
     );
-    console.log(data);
     // 登录成功
     if (data.code === LoginCode.LOGINSUCCESSCODE) {
       if (this.remember) {

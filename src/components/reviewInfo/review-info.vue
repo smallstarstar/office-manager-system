@@ -12,15 +12,19 @@
         </el-col>
         <el-col :span="6">
           <div>类型</div>
-          <div class="name">{{eventInfo.typeName}}</div>
+          <div class="name">{{eventInfo.subName}}</div> 
         </el-col>
         <el-col :span="6">
           <div>时间</div>
-          <div class="name">{{ timeChange.changeStateTime(eventInfo.time)}}</div>
+          <div class="name">{{ timeChange.changeStateTime(eventInfo.cTime)}}</div>
         </el-col>
         <el-col :span="6">
           <div>等级</div>
-          <div class="name">{{eventInfo.level}}</div>
+          <div class="name">
+            <span :style="utilServices.getColor(+(eventInfo.level))">
+             <span style="padding:10px 20px;color:#fff"> {{eventInfo.level}}</span>
+            </span>
+          </div>
         </el-col>
       </el-row>
       <el-row :gutter="24">
@@ -45,6 +49,8 @@ import { Component, Vue } from "vue-property-decorator";
 import { Getter } from "vuex-class";
 import timeFormat from "@/utils/timeFormat";
 import AddDesc from './add-desc.vue'; 
+import utilServices from '@/utils/utils-services';
+
 @Component({
   components: {
     AddDesc
@@ -54,6 +60,7 @@ export default class ReviewInfo extends Vue {
   @Getter("eventInfo")
   eventInfo!: any;
   private timeChange: any = timeFormat;
+  private utilServices: any = utilServices;
 }
 </script>
 

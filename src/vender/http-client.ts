@@ -3,6 +3,8 @@ import qs from 'qs';
 import router from '../router';
 import EventKeys from '../common/event-keys/eventKeys';
 import rxEvent from 'pubsub-js';
+
+
 /**
  * 请求相应拦截
  */
@@ -13,11 +15,15 @@ axios.interceptors.response.use((res: any) => {
     if (error.response.status === 400) {
         rxEvent.publish(EventKeys.PARMAS_ERROR_MESSAGE, true);
     }
+    if(error.response.status === 500) {
+        rxEvent.publish(EventKeys.SERVICES_ERROR_MESSAGE, true);
+    }
     if (error.response.status === 404) {
-        // 未找到
-        router.push({
-            path: '*'
-        })
+        // 资源未找到(请求路径错误)
+        rxEvent.publish(EventKeys.REQUEST_ERROR_WAY, true);
+        // router.push({
+        //     path: '*'
+        // })
     }
 });
 

@@ -1,0 +1,6 @@
+{
+    "TimeSheet":{
+        "saveEventInfoMessage": "添加了事件信息",
+        "addDetailInfoMessage": "添加了一条备注信息"
+    }
+}
