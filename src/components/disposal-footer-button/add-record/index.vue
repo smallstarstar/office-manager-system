@@ -8,7 +8,7 @@
       popper-class="poppper"
       v-model="visible"
     >
-      <div>nihao</div>
+      <div>添加字段</div>
       <el-button slot="reference" @click="visible = !visible">添加记录</el-button>
     </el-popover>
   </div>
